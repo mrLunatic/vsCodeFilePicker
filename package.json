@@ -3,7 +3,11 @@
 	"displayName": "file-picker",
 	"description": "Simple tool to picc file names and provide it to inputs",
 	"version": "0.1.0",
-	"publisher": "DmitriyMuraviov",
+    "publisher": "DmitriyMuraviov",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mrLunatic/vsCodeFilePicker.git"
+    },
 	"engines": {
 		"vscode": "^1.25.0"
 	},
