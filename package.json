@@ -2,7 +2,7 @@
 	"name": "lunatic-file-picker",
 	"displayName": "file-picker",
 	"description": "Simple tool to picc file names and provide it to inputs",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"publisher": "DmitriyMuraviov",
 	"engines": {
 		"vscode": "^1.25.0"
