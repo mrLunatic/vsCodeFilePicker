@@ -1,8 +1,8 @@
 {
 	"name": "lunatic-file-picker",
 	"displayName": "file-picker",
-	"description": "Simple tool to picc file names and provide it to inputs",
-	"version": "0.1.0",
+	"description": "Simple tool select file from your project by name or json content",
+	"version": "0.1.1",
     "publisher": "DmitriyMuraviov",
     "repository": {
         "type": "git",
@@ -14,10 +14,16 @@
 	"categories": [
 		"Other"
 	],
+	"keywords": [
+		"pick",
+		"file",
+		"inputs"
+	],
 	"activationEvents": [
 		"onCommand:filePicker.pick"
 	],
 	"main": "./out/extension.js",
+	"icon": "images/icon.png",
 	"contributes": {
 		"commands": [
 			{
