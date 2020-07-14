@@ -31,7 +31,7 @@ Example 'tasks.json' file to build project in monorepo with lerna
         {
             "label": "echo",
             "type": "shell",
-            "command": "echo ${pickerInput:p}",
+            "command": "echo ${input:pickerInput}",
             "problemMatcher": []
         }
     ]
