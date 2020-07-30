@@ -101,20 +101,47 @@ export class PickCommand {
     private getOutput(file: string, root: string): string | undefined {
         return this.getProperty(file, root, this._args.output);
     }
-    public async Invoke(): Promise<string | undefined> {
+
+    private async getAbsoluteMap(mask: string): Promise<Map<vscode.QuickPickItem, string>> {
         const map = new Map<vscode.QuickPickItem, string>();
-        const masks = this.getMasks();
+        var files = await this.getFilesAsync(mask);
+        for (const file of files) {
+            const key = this.getDisplay(file, "/");
+            const value = this.getOutput(file, "/");
+            if (key != undefined && value != undefined) {
+                map.set(key, value);
+            }
+        }
+        return map;
+    }
+
+    private async getWorkspaceMap(mask: string): Promise<Map<vscode.QuickPickItem, string>> {
+        const map = new Map<vscode.QuickPickItem, string>();
+
         for (const folder of vscode.workspace.workspaceFolders) {
             const root = folder.uri.fsPath;
-            for (const mask of masks) {
-                var files = await this.getFilesAsync(path.join(root, mask));
-                for (const file of files) {
-                    const key = this.getDisplay(file, root);
-                    const value = this.getOutput(file, root);
-                    if (key != undefined && value != undefined) {
-                        map.set(key, value);
-                    }
+            var files = await this.getFilesAsync(path.join(root, mask));
+            for (const file of files) {
+                const key = this.getDisplay(file, root);
+                const value = this.getOutput(file, root);
+                if (key != undefined && value != undefined) {
+                    map.set(key, value);
                 }
+            }
+        }
+
+        return map;
+    }
+
+    public async Invoke(): Promise<string | undefined> {
+        var map: Map<vscode.QuickPickItem, string>;
+        const masks = this.getMasks();
+
+        for (const mask of masks) {
+            if (mask.startsWith("/")) {
+                map = await this.getAbsoluteMap(mask);
+            } else {
+                map = await this.getWorkspaceMap(mask);
             }
         }
         const names = Array.from(map.keys());

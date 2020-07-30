@@ -40,7 +40,7 @@ Example 'tasks.json' file to build project in monorepo with lerna
 
 ## Arguments
 
-* `masks` `<string | string[]>` Masks to file search
+* `masks` `<string | string[]>` Masks to file search. Masks starting with `"/"` are searched as absolute paths, not relative to `workspaceFolder`.
 * `display` `<DisplayType | DisplayConfig>` File names presentation type
 * `output` `<DisplayType | DisplayConfig>` Output presentation type
 
