@@ -49,7 +49,7 @@ Example 'tasks.json' file to build project in monorepo with lerna
 * `fileName` returns file name (ex. _readme.md_)
 * `filePath` returns absolute file path (ex _c:/Projects/proj/info/readme.md_)
 * `fileRelativePath` returns file path, relative to workspace (ex _info/readme.md_)
-* `dirName`	returs name of directory containings file (ex. _info_)
+* `dirName` returs name of directory containings file (ex. _info_)
 * `dirPath` returs absolute path to directory containings file (ex. _c:/Projects/proj/info_)
 * `dirRelativePath` returs relative path to directory containings file (ex. _info_)
 * `json` reads file as json object and returns value of property, specified in `PresentationConfig.json` property
